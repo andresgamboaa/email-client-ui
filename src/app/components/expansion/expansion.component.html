@@ -1,0 +1,21 @@
+<div class="mb-2">
+    <button (click)="toggleState()"
+        class="w-full text-left font-bold opacity-90"
+    >
+        <span class="relative ml-2 mr-4 opacity-60">
+            <span class="absolute transition-all" [ngClass]="{'rotate-90': isToggled}">></span>
+        </span>
+        {{name}}
+    </button>
+    <div 
+        class="grid transition-all duration-300 ease-in-out mt-2" 
+        [ngClass]="{'grid-rows-[1fr] opacity-100': isToggled, 'grid-rows-[0fr] opacity-0':!isToggled}"
+    >
+        <div class="overflow-hidden transition-all ml-6 duration-200"
+        [ngClass]="{'delay-150 opacity-100': isToggled, 'delay-0 opacity-0':!isToggled}"
+        >
+            <ng-content></ng-content>
+        </div>
+    </div>
+
+</div>
