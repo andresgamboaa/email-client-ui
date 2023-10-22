@@ -11,7 +11,9 @@ import { EmailListComponent } from './components/email-list/email-list.component
 import { EmailItemComponent } from './components/email-item/email-item.component';
 import { TopBarComponent } from './components/top-bar/top-bar.component';
 import {MatIconModule} from '@angular/material/icon';
-import { ToolbarComponent } from './components/toolbar/toolbar.component'
+import { ToolbarComponent } from './components/toolbar/toolbar.component';
+import { StoreModule } from '@ngrx/store'
+import { selectedReducer } from './state/selected/selected.reducer';
 
 @NgModule({
   declarations: [
@@ -28,7 +30,8 @@ import { ToolbarComponent } from './components/toolbar/toolbar.component'
     AppRoutingModule,
     BrowserAnimationsModule,
     MatExpansionModule,
-    MatIconModule
+    MatIconModule,
+    StoreModule.forRoot({selected: selectedReducer})
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -12,7 +12,7 @@ export class EmailService {
 
   constructor() {
     this.inbox = faker.helpers.multiple(createRandomEmail, {
-      count: 20,
+      count: 15,
     });   
   }
 

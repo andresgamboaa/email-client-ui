@@ -1,34 +1,33 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
+import { Store, createSelector, select } from '@ngrx/store';
+import { Observable } from 'rxjs';
 import { Email } from 'src/app/email.model';
+import { toggleSelection, toggleSelectionAll } from 'src/app/state/selected/selected.actions';
+
+export const selectFeature = (state: any) => state.selected;
+
+export const countSelector = createSelector(selectFeature, state => state.selected);
+
 
 @Component({
   selector: 'app-email-list',
   templateUrl: './email-list.component.html',
 })
-
 export class EmailListComponent {
   @Input() emails!: Email[];
-  selected = new Set<string>();
+  selected$: Observable<Set<string>>;
+
+  constructor(private store: Store) {
+    this.selected$ = this.store.pipe(select(countSelector));
+  }
 
   toggleSelection(emailId: string) {
-    if (this.selected.has(emailId)) {
-      this.selected.delete(emailId);
-    } else {
-      this.selected.add(emailId);
-    }
+    this.store.dispatch(toggleSelection({id: emailId}));
   }
 
   toggleSelectionAll() {
-    let check = this.selected.size < this.emails.length;
-
-    for (let email of this.emails) {
-      if (check) {
-        this.selected.add(email.Id)
-      }
-      else {
-        this.selected.delete(email.Id)
-      }
-    }
+    this.store.dispatch(toggleSelectionAll( {
+      ids: this.emails.map((e) => e.Id)
+    }))
   }
-
 }

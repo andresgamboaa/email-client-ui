@@ -1,9 +1,9 @@
 <div class="w-[300px] h-full overflow-hidden bg-gray-100 border border-gray-300 rounded-md select-none flex flex-col">
     <div>
         <button
-            (click) = "toggleSelectionAll()"
+            (click)="toggleSelectionAll()"
             class="mx-3 mt-1"
-            [ngClass]="selected.size==emails.length? 'opacity-100':'opacity-40'" 
+            [ngClass]="(selected$ | async)?.size ==emails.length? 'opacity-100':'opacity-40'" 
         >
     <mat-icon >check_circle_outline</mat-icon>
 </button>
@@ -11,9 +11,9 @@
     <div class="w-full h-full overflow-hidden overflow-y-auto">
         <app-email-item *ngFor="let email of emails" 
             [email]="email"
-            [isSelected]="selected.has(email.Id)"
+            [isSelected]="(selected$ | async)?.has(email.Id) || false"
             (selected)="toggleSelection($event)"
-            [showSelectButton]="selected.size>0"
+            [showSelectButton]="((selected$ | async)?.size != 0) || false"
         ></app-email-item>
     </div>
 </div>
