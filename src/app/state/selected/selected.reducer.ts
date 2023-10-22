@@ -11,6 +11,7 @@ export const initialState: State = {
 
 export const selectedReducer = createReducer(
     initialState,
+
     on(toggleSelection, ({selected}, {id}) => {
         const newState = new Set(selected);
         if (selected.has(id)) {
@@ -22,6 +23,7 @@ export const selectedReducer = createReducer(
 
         return {selected:newState}
     }),
+
     on(toggleSelectionAll, ({selected}, {ids}) => {
         const newState = new Set(selected);
 

@@ -1,3 +1,11 @@
-<div class=" h-fit overflow-hidden bg-gray-100 shadow-sm shadow-gray-400 m-2 rounded-md border flex p-1 items-center">
-    <ng-content></ng-content>
+<div class="h-fit overflow-hidden bg-gray-100 shadow-sm shadow-gray-400 m-2 rounded-md border flex p-1 items-center">
+    <button class="bg-indigo-600 text-white rounded-md px-4 py-1">New email</button>
+    <div class="flex"
+        [ngClass]="{'opacity-30 pointer-events-none': (selected$ | async)?.size == 0}"
+    >
+        <button class="ml-4 border rounded-md p-1 flex items-center hover:border-gray-400 hover:bg-gray-200"><mat-icon class="text-red-800">delete</mat-icon></button>
+        <button class="ml-1 border rounded-md p-1 flex items-center hover:border-gray-400 hover:bg-gray-200"><mat-icon>archive</mat-icon></button>
+        <button class="ml-1 border rounded-md p-1 flex items-center hover:border-gray-400 hover:bg-gray-200"><mat-icon>warning</mat-icon></button>
+        <button class="ml-1 border rounded-md p-1 flex items-center hover:border-gray-400 hover:bg-gray-200"><mat-icon>save</mat-icon></button>
+    </div>
 </div>
