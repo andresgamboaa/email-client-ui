@@ -19,6 +19,7 @@ export class EmailItemComponent {
   @Input() isSelected = false;
   @Input() showSelectButton = false;
   @Output() selected = new EventEmitter<string>();
+  @Output() click = new EventEmitter();
   color = colors[Math.floor(Math.random()*colors.length)];
 
   toggleSelection() {

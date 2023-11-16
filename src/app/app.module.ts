@@ -14,6 +14,7 @@ import {MatIconModule} from '@angular/material/icon';
 import { ToolbarComponent } from './components/toolbar/toolbar.component';
 import { StoreModule } from '@ngrx/store'
 import { selectedReducer } from './state/selected/selected.reducer';
+import { ReaderComponent } from './components/reader/reader.component';
 
 @NgModule({
   declarations: [
@@ -23,7 +24,8 @@ import { selectedReducer } from './state/selected/selected.reducer';
     EmailListComponent,
     EmailItemComponent,
     TopBarComponent,
-    ToolbarComponent
+    ToolbarComponent,
+    ReaderComponent
   ],
   imports: [
     BrowserModule,

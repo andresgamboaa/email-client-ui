@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { Store, createSelector, select } from '@ngrx/store';
 import { Observable } from 'rxjs';
 import { Email } from 'src/app/email.model';
@@ -14,6 +14,7 @@ export const countSelector = createSelector(selectFeature, state => state.select
   templateUrl: './email-list.component.html',
 })
 export class EmailListComponent {
+  @Output() emailSelected = new EventEmitter<string>();
   @Input() emails!: Email[];
   selected$: Observable<Set<string>>;
 

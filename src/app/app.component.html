@@ -5,14 +5,15 @@
 
     <div class="flex w-full h-full overflow-hidden ">
         <app-sidebar></app-sidebar>
-        <app-email-list [emails]="emails"></app-email-list>
-        <div class="flex w-full h-full justify-center items-center overflow-hidden">
-            <div class="flex flex-col items-center opacity-70">
-                <span class="font-bold">Select an element to read it</span>
-                <span class="text-sm">There is nothing selected</span>
-            </div>
-        </div>
+        <app-email-list 
+            [emails]="emails"
+            (emailSelected)="select($event)"
+        ></app-email-list>
+        <app-reader
+            class="w-full m-4 mt-0"
+            *ngIf="selected"
+            [email]="selected"
+            ></app-reader> 
     </div>
-
 </div>
 <router-outlet></router-outlet>

@@ -1,0 +1,15 @@
+<div class="h-full w-full">
+    <div class="flex flex-col h-full w-full border bg-white rounded-md shadow-md shadow-gray-400 p-6 overflow-auto">
+        <div class="flex items-center">
+            <div class="w-[30px] h-[30px] p-2 rounded-full flex group-hover:hidden mr-2 justify-center items-center text-sm font-bold"
+                [ngStyle]="{'background-color': 'green'}"
+            >
+                <span class="opacity-80">{{email.authorId.split(" ")[0][0] + email.authorId.split(" ")[1][0]}}</span>
+            </div>
+            <span>{{email.author}}</span>
+        </div>
+        <p class="mt-4">
+            {{email.content}}
+        </p>
+    </div>
+</div>

@@ -13,6 +13,7 @@
             [email]="email"
             [isSelected]="(selected$ | async)?.has(email.Id) || false"
             (selected)="toggleSelection($event)"
+            (click)="emailSelected.emit(email.Id)"
             [showSelectButton]="((selected$ | async)?.size != 0) || false"
         ></app-email-item>
     </div>

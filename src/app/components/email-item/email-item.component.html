@@ -1,5 +1,6 @@
 <div class="relative group border-b w-full p-2 select-none transition-all hover:shadow-md shadow-black mb-1"
     [ngClass]="isSelected? 'bg-slate-300 hover:bg-slate-300' : 'bg-transparent hover:bg-white '"
+    (click)="click.emit()"
 >
     <div class="hidden group-hover:block opacity-60">
         <button 

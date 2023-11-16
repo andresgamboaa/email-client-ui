@@ -10,9 +10,14 @@ import { EmailService} from './services/email-service.service';
 export class AppComponent {
   title = 'angular-email';
   emails!: Email[];
+  selected?: Email;
 
   constructor(private emailService: EmailService) {
     this.emails = emailService.getInbox();
+  }
+
+  select(id: string) {
+    this.selected = this.emails.find(e => e.Id == id);
   }
 
 }
